@@ -76,5 +76,7 @@ Vagrant.configure(2) do |config|
     sudo a2ensite default-ssl
     sudo service apache2 restart
     echo 'CREATE DATABASE drupal' | mysql -uroot
+    sudo pear channel-discover pear.drush.org
+    sudo pear install drush/drush
   SHELL
 end
