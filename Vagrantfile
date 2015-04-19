@@ -72,5 +72,9 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y php5 libapache2-mod-php5 php5-mysql php-pear
     sudo rm -rf /var/www
     sudo ln -s /vagrant/drupal /var/www
+    sudo a2enmod ssl
+    sudo a2ensite default-ssl
+    sudo service apache2 restart
+    echo 'CREATE DATABASE drupal' | mysql -uroot
   SHELL
 end
