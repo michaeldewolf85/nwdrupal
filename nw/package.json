@@ -1,0 +1,13 @@
+{
+  "main": "http://192.168.33.10",
+  "name": "Drupal-NW",
+  "description": "NW.js version of Drupal.",
+  "version": "v1.0",
+  "window": {
+    "width": 768,
+    "height": 768,  
+    "toolbar": false,
+    "min_width": 768,
+    "min_height": 768
+  }
+}
