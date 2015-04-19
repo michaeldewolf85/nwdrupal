@@ -70,5 +70,7 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y apache2
     sudo apt-get install -y mysql-server
     sudo apt-get install -y php5 libapache2-mod-php5 php5-mysql php-pear
+    sudo rm -rf /var/www
+    sudo ln -s /vagrant/drupal /var/www
   SHELL
 end
