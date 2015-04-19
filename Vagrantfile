@@ -69,14 +69,18 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get install -y apache2
     sudo apt-get install -y mysql-server
-    sudo apt-get install -y php5 libapache2-mod-php5 php5-mysql php-pear
+    sudo apt-get install -y php5 libapache2-mod-php5 php5-mysql php5-gd php-pear
     sudo rm -rf /var/www
     sudo ln -s /vagrant/drupal /var/www
+    sudo sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/sites-available/default
+    sudo sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/sites-available/default-ssl
     sudo a2enmod ssl
     sudo a2ensite default-ssl
     sudo service apache2 restart
     echo 'CREATE DATABASE drupal' | mysql -uroot
     sudo pear channel-discover pear.drush.org
     sudo pear install drush/drush
+    cd /vagrant/drupal
+    drush site-install --db-url=mysql://root:@localhost/drupal -y
   SHELL
 end
